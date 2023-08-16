@@ -1,8 +1,7 @@
 import 'dotenv/config'
-
+import { con } from './repository/connection'
 import express from 'express'
 import cors from 'cors'
-import { con } from './repository/connection'
 
 const server = express()
 server.use(cors())
