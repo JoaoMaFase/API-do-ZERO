@@ -1,4 +1,4 @@
-import { inserirTarefa , listarTodasTarefas } from '../repository/tarefaRepository.js'
+import { inserirTarefa , listarTodasTarefas, listarTodasTarefasFinalizadas } from '../repository/tarefaRepository.js'
 
 import { Router } from  'express'
 const server = Router()
@@ -13,7 +13,7 @@ server.post('/tarefa', async (req, resp) => {
             throw new Error('Descrição da tarefa é obrigatório!');
         if (!tarefaParaInserir.ordem || tarefaParaInserir.ordem < 1)
             throw new Error('Ordem da tarefa é obrigatório!');
-        if (tarefaParaInserir.finalizado != true || tarefaParaInserir.finalizado != false)
+        if (!tarefaParaInserir.finalizado)
             throw new Error('Campo finalizado é obrigatório!');
         if (!tarefaParaInserir.cadastro)
             throw new Error('Data de cadastro é obrigatória!');
@@ -32,6 +32,17 @@ server.post('/tarefa', async (req, resp) => {
 server.get('/tarefa', async (req, resp) =>{
     try {
         const resposta = await listarTodasTarefas()
+        resp.send(resposta)
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/tarefa/finalizadas', async (req, resp) =>{
+    try {
+        const resposta = await listarTodasTarefasFinalizadas()
         resp.send(resposta)
     } catch (err) {
         resp.status(400).send({

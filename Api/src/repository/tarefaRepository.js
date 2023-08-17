@@ -22,3 +22,17 @@ export async function listarTodasTarefas(){
     const [linhas] = await con.query(comando)
     return linhas
 }
+
+export async function listarTodasTarefasFinalizadas(){
+    const comando = 
+    `select	id_tarefa		id,
+            ds_tarefa		descricao,
+            nr_ordem		ordem,
+            bt_finalizado	finalizado,
+            dt_cadastro		cadastro
+    from	tb_tarefa
+    where   bt_finalizado = true`
+
+    const [linhas] = await con.query(comando)
+    return linhas
+}
