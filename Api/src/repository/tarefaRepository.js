@@ -36,3 +36,11 @@ export async function listarTodasTarefasFinalizadas(){
     const [linhas] = await con.query(comando)
     return linhas
 }
+
+export async function deletarTarefa(id){
+    const comando = 
+    `delete from tb_tarefa
+        where id_tarefa = ?`
+    const [resposta] = await con.query(comando, [id])
+    return resposta.affectedRows
+}
