@@ -15,3 +15,4 @@ server.post('/usuario/login', async (req,resposta) => {
         })
     }
 })
+export default server;
