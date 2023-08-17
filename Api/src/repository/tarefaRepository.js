@@ -9,3 +9,16 @@ export async function inserirTarefa(tarefa){
 
     return tarefa;
 }
+
+export async function listarTodasTarefas(){
+    const comando = 
+    `select	id_tarefa		id,
+            ds_tarefa		descricao,
+            nr_ordem		ordem,
+            bt_finalizado	finalizado,
+            dt_cadastro		cadastro
+    from	tb_tarefa;`
+
+    const [linhas] = await con.query(comando)
+    return linhas
+}

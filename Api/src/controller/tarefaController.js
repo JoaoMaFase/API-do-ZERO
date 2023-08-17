@@ -1,4 +1,4 @@
-import { inserirTarefa } from '../repository/tarefaRepository.js'
+import { inserirTarefa , listarTodasTarefas } from '../repository/tarefaRepository.js'
 
 import { Router } from  'express'
 const server = Router()
@@ -22,6 +22,17 @@ server.post('/tarefa', async (req, resp) => {
 
         resp.send(tarefaInserida)
 
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/tarefa', async (req, resp) =>{
+    try {
+        const resposta = await listarTodasTarefas()
+        resp.send(resposta)
     } catch (err) {
         resp.status(400).send({
             erro: err.message
