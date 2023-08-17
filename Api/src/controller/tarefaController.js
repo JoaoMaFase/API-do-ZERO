@@ -11,7 +11,7 @@ server.post('/tarefa', async (req, resp) => {
         throw new Error('Usuário não logado!');
         if (!tarefaParaInserir.descricao)
             throw new Error('Descrição da tarefa é obrigatório!');
-        if (!tarefaParaInserir.ordem || !tarefaParaInserir.ordem < 1)
+        if (!tarefaParaInserir.ordem || tarefaParaInserir.ordem < 1)
             throw new Error('Ordem da tarefa é obrigatório!');
         if (tarefaParaInserir.finalizado != true || tarefaParaInserir.finalizado != false)
             throw new Error('Campo finalizado é obrigatório!');
