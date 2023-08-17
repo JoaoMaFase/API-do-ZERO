@@ -1,5 +1,4 @@
 import 'dotenv/config'
-import { con } from './repository/connection.js'
 import express from 'express'
 import cors from 'cors'
 
