@@ -1,5 +1,11 @@
 use tarefa_db;
 
+
+-- cadastrar novo admin
+insert into tb_usuario(nm_usuario,ds_email,ds_senha)
+	values('admin','admin@admin.com.br',1234)
+
+
 -- cadastrar nova tarefa
 insert into tb_tarefa(ds_tarefa,nr_ordem,bt_finalizado,dt_cadastro)
 	values ();
