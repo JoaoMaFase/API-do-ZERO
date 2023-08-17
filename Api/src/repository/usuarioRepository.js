@@ -12,3 +12,5 @@ export async function login(email, senha){
     const [linhas] = await con.query(comando, [email,senha])
     return linhas[0]
 }
+
+export default Server;
